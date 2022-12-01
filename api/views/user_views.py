@@ -8,12 +8,8 @@ from rest_framework.response import Response
 from django.contrib.auth.models import User
 
 
-class UserRegistrationAPIView(ListCreateAPIView):
+class UserRegistrationAPIView(CreateAPIView):
     serializer_class = UserRegistrationSerializer
-
-
-
-
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
