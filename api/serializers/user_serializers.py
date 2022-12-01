@@ -9,7 +9,8 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         exclude = ["email", "is_superuser", "is_active", "groups", "user_permissions", 'last_login', 'date_joined', "username", "is_staff"]
-        extra_kwargs = {"password": {"write_only": True}, "phone": {}}
+        extra_kwargs = {"password": {"write_only": True}}
+        fields = ["phone", "first_name", "last_name", "password"]
 
 
     def get_phone(self, obj):
