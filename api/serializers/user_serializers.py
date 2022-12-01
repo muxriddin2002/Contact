@@ -4,21 +4,15 @@ from rest_framework_simplejwt.tokens import RefreshToken
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
-    phone = serializers.SerializerMethodField()
 
     class Meta:
         model = User
-        exclude = ["email", "is_superuser", "is_active", "groups", "user_permissions", 'last_login', 'date_joined', "username", "is_staff"]
+        exclude = ["email", "is_superuser", "is_active", "groups", "user_permissions", 'last_login', 'date_joined', "is_staff"]
         extra_kwargs = {"password": {"write_only": True}}
-        fields = ["phone", "first_name", "last_name", "password"]
-
-
-    def get_phone(self, obj):
-        return obj.username
 
     def create(self, validated_data):
         user = User.objects.create(
-            username=validated_data["phone"],
+            username=validated_data["username"],
             first_name=validated_data["first_name"],
             last_name=validated_data["last_name"],
         )
