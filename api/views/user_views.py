@@ -11,8 +11,6 @@ from django.contrib.auth.models import User
 class UserRegistrationAPIView(ListCreateAPIView):
     serializer_class = UserRegistrationSerializer
 
-    def get_serializer_class(self):
-        return UserSerializer
 
 
 

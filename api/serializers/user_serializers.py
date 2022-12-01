@@ -7,6 +7,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         exclude = ["is_superuser", "is_active", "groups", "user_permissions", 'last_login', 'date_joined']
+        extra_kwargs = {"password": {"write_only": True}}
 
 
     def create(self, validated_data):
